@@ -10,10 +10,21 @@
   <meta property="og:title" content="Espaço Açaí & Gelatos — Açaí Premium e Gelatos Artesanais">
   <meta property="og:description" content="O seu açaí perfeito do dia. Explore nosso catálogo, escolha seus favoritos e faça seu pedido.">
   <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="assets/logo.png">
 </head>
-<body>
+<body class="is-loading">
+
+  <!-- ============ LOADING SCREEN ============ -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-content">
+      <img src="assets/logo.png" alt="Carregando" class="loading-logo" decoding="async">
+      <div class="loading-spinner"></div>
+    </div>
+  </div>
 
   <!-- ============ SVG SPRITES ============ -->
   <svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
@@ -155,37 +166,37 @@
 
       <div class="instagram-grid reveal" id="instagram-slider">
         <div class="insta-card">
-          <img src="https://drive.google.com/thumbnail?id=1P8Vex084RUcUaVxrZ_5yMFngox3IfS8b&sz=w1200" alt="Post 1">
+          <img src="https://drive.google.com/thumbnail?id=1P8Vex084RUcUaVxrZ_5yMFngox3IfS8b&sz=w400" alt="Post 1" loading="lazy" decoding="async">
           <div class="insta-card-overlay">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           </div>
         </div>
         <div class="insta-card">
-          <img src="https://drive.google.com/thumbnail?id=1xOcHgYeKVxiPZlAKqK7Mr5tKQsozdVxv&sz=w1200" alt="Post 2">
+          <img src="https://drive.google.com/thumbnail?id=1xOcHgYeKVxiPZlAKqK7Mr5tKQsozdVxv&sz=w400" alt="Post 2" loading="lazy" decoding="async">
           <div class="insta-card-overlay">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           </div>
         </div>
         <div class="insta-card">
-          <img src="https://drive.google.com/thumbnail?id=1YGcQ8mrGuLaytWwsRSkikpwYwvtsPMVy&sz=w1200" alt="Post 3">
+          <img src="https://drive.google.com/thumbnail?id=1YGcQ8mrGuLaytWwsRSkikpwYwvtsPMVy&sz=w400" alt="Post 3" loading="lazy" decoding="async">
           <div class="insta-card-overlay">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           </div>
         </div>
         <div class="insta-card">
-          <img src="https://drive.google.com/thumbnail?id=1yMIZomhs6Uyrxgc7VLZzQyDCDbfqphcv&sz=w1200" alt="Post 4">
+          <img src="https://drive.google.com/thumbnail?id=1yMIZomhs6Uyrxgc7VLZzQyDCDbfqphcv&sz=w400" alt="Post 4" loading="lazy" decoding="async">
           <div class="insta-card-overlay">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           </div>
         </div>
         <div class="insta-card">
-          <img src="https://drive.google.com/thumbnail?id=1q-iW39ofu5-Ieso13PahoKFFwF230SJ2&sz=w1200" alt="Post 5">
+          <img src="https://drive.google.com/thumbnail?id=1q-iW39ofu5-Ieso13PahoKFFwF230SJ2&sz=w400" alt="Post 5" loading="lazy" decoding="async">
           <div class="insta-card-overlay">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           </div>
         </div>
         <div class="insta-card">
-          <img src="https://drive.google.com/thumbnail?id=1fXGSrNAgNLApNLUmyae1cP1jbdtzT1w_&sz=w1200" alt="Post 6">
+          <img src="https://drive.google.com/thumbnail?id=1fXGSrNAgNLApNLUmyae1cP1jbdtzT1w_&sz=w400" alt="Post 6" loading="lazy" decoding="async">
           <div class="insta-card-overlay">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           </div>
@@ -241,7 +252,7 @@
         <!-- Card: Açaí no Copo -->
         <div class="menu-card reveal-scale delay-1" data-category="acai-tradicional" data-name="Açaí no Copo">
           <div class="menu-card-image">
-            <img src="assets/acai-copo.png" alt="Açaí no Copo Premium" loading="lazy">
+            <img src="assets/acai-copo.png" alt="Açaí no Copo Premium" loading="lazy" decoding="async">
             <span class="menu-card-tag">Tradicional</span>
           </div>
           <div class="menu-card-body">
@@ -257,7 +268,7 @@
         <!-- Card: Açaí na Marmita -->
         <div class="menu-card reveal-scale delay-2" data-category="acai-tradicional" data-name="Açaí na Marmita">
           <div class="menu-card-image">
-            <img src="assets/acai-marmita.png" alt="Açaí na Marmita Premium" loading="lazy">
+            <img src="assets/acai-marmita.png" alt="Açaí na Marmita Premium" loading="lazy" decoding="async">
             <span class="menu-card-tag">Tradicional</span>
           </div>
           <div class="menu-card-body">
@@ -273,7 +284,7 @@
         <!-- Card: Gelato de Morango -->
         <div class="menu-card reveal-scale delay-3" data-category="gelatos" data-name="Gelato de Morango">
           <div class="menu-card-image">
-            <img src="assets/gelato-morango.png" alt="Gelato Artesanal de Morango" loading="lazy">
+            <img src="assets/gelato-morango.png" alt="Gelato Artesanal de Morango" loading="lazy" decoding="async">
             <span class="menu-card-tag tag-green">Gelato</span>
           </div>
           <div class="menu-card-body">
@@ -289,7 +300,7 @@
         <!-- Card: Gelato de Ninho com Nutella -->
         <div class="menu-card reveal-scale delay-4" data-category="gelatos" data-name="Gelato de Ninho com Nutella">
           <div class="menu-card-image">
-            <img src="assets/gelato-ninho.png" alt="Gelato Artesanal de Ninho com Nutella" loading="lazy">
+            <img src="assets/gelato-ninho.png" alt="Gelato Artesanal de Ninho com Nutella" loading="lazy" decoding="async">
             <span class="menu-card-tag tag-green">Gelato</span>
           </div>
           <div class="menu-card-body">
@@ -334,7 +345,7 @@
       <div class="story-grid">
         <div class="story-image-wrapper reveal-left">
           <div class="story-image-frame">
-            <img src="assets/nossa-historia.png" alt="Interior acolhedor do Espaço Açaí & Gelatos" loading="lazy">
+            <img src="assets/nossa-historia.png" alt="Interior acolhedor do Espaço Açaí & Gelatos" loading="lazy" decoding="async">
           </div>
           <div class="story-image-accent"></div>
         </div>
@@ -427,7 +438,8 @@
 
         <div class="visit-map-wrapper reveal-right delay-2">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d796.6!2d-42.7561749!3d-3.6798984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7f2b30004c8beb1%3A0xee398ec87b2c791a!2sEspa%C3%A7o%20Caf%C3%A9%20%2F%20Posto%20IC!5e0!3m2!1spt-BR!2sbr!4v1" 
+            id="visit-map-iframe"
+            data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d796.6!2d-42.7561749!3d-3.6798984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7f2b30004c8beb1%3A0xee398ec87b2c791a!2sEspa%C3%A7o%20Caf%C3%A9%20%2F%20Posto%20IC!5e0!3m2!1spt-BR!2sbr!4v1" 
             allowfullscreen="" 
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade"
@@ -854,6 +866,6 @@
     </svg>
   </a>
 
-  <script src="script.js" charset="UTF-8"></script>
+  <script src="script.js" charset="UTF-8" defer></script>
 </body>
 </html>

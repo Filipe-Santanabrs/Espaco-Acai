@@ -4,7 +4,7 @@
    ========================================== */
 
 /* === Google Fonts === */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+/* Loaded via <link> in HTML for better performance */
 
 /* === CSS Custom Properties === */
 :root {
@@ -2672,3 +2672,80 @@ ul {
 }
 
 /* Duplicate reveal rules removed — originals at L222-L272 are canonical */
+
+/* ==========================================
+   PERFORMANCE & LOADING (Android Optimization)
+   ========================================== */
+
+/* === Loading Screen === */
+html.is-loading, body.is-loading {
+  overflow: hidden !important;
+}
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--dark-bg);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.loading-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: var(--white);
+  padding: 12px;
+  animation: pulseLogo 2s infinite ease-in-out;
+  will-change: transform, opacity, filter;
+  object-fit: contain;
+}
+
+@keyframes pulseLogo {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 20px rgba(155, 79, 213, 0.4)); }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(155, 79, 213, 0.2);
+  border-top-color: var(--green-main);
+  border-radius: 50%;
+  animation: spinLoader 1s infinite linear;
+  will-change: transform;
+}
+
+@keyframes spinLoader {
+  to { transform: rotate(360deg); }
+}
+
+/* === Performance Hacks below the fold === */
+.menu-section, .story-section, .visit-section, .footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px;
+}
+
+/* Disable body gradients pseudo-elements heavily impacting mobile composite */
+@media (max-width: 768px) {
+  body::before, body::after {
+    display: none !important;
+  }
+}

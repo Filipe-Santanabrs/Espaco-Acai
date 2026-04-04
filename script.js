@@ -3,6 +3,25 @@
    Premium Interactions & Animations
    ========================================== */
 
+// ============ LOADING SCREEN ============
+window.addEventListener('load', () => {
+  const loader = document.getElementById('loading-screen');
+  if (loader) {
+    loader.classList.add('hidden');
+    document.documentElement.classList.remove('is-loading');
+    document.body.classList.remove('is-loading');
+  }
+});
+// Fallback
+setTimeout(() => {
+  const loader = document.getElementById('loading-screen');
+  if (loader && !loader.classList.contains('hidden')) {
+    loader.classList.add('hidden');
+    document.documentElement.classList.remove('is-loading');
+    document.body.classList.remove('is-loading');
+  }
+}, 4000);
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // ============ CLICK RIPPLE EFFECT (optimized: reuse pool) ============
@@ -822,6 +841,20 @@ document.addEventListener('DOMContentLoaded', () => {
       newFavicon.href = canvas.toDataURL('image/png');
       document.head.appendChild(newFavicon);
     };
+  }
+
+  // ============ MAPS LAZY LOAD ============
+  const mapIframe = document.getElementById('visit-map-iframe');
+  if (mapIframe) {
+    const mapObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.src = entry.target.dataset.src;
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '200px' });
+    mapObserver.observe(mapIframe);
   }
 
   // ============ PRINT DEBUG INFO ============
