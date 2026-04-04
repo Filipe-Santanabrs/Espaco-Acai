@@ -4,23 +4,34 @@
    ========================================== */
 
 // ============ LOADING SCREEN ============
-window.addEventListener('load', () => {
-  const loader = document.getElementById('loading-screen');
-  if (loader) {
-    loader.classList.add('hidden');
-    document.documentElement.classList.remove('is-loading');
-    document.body.classList.remove('is-loading');
-  }
-});
-// Fallback
-setTimeout(() => {
+const hideLoader = () => {
   const loader = document.getElementById('loading-screen');
   if (loader && !loader.classList.contains('hidden')) {
     loader.classList.add('hidden');
     document.documentElement.classList.remove('is-loading');
     document.body.classList.remove('is-loading');
   }
-}, 4000);
+};
+
+const windowLoadPromise = new Promise(resolve => {
+  if (document.readyState === 'complete') {
+    resolve();
+  } else {
+    window.addEventListener('load', resolve);
+  }
+});
+
+const fontsLoadPromise = document.fonts ? document.fonts.ready : Promise.resolve();
+
+Promise.all([windowLoadPromise, fontsLoadPromise]).then(() => {
+  // Wait a brief moment to guarantee all browser paints are totally finished
+  setTimeout(hideLoader, 200);
+}).catch(() => {
+  hideLoader();
+});
+
+// Fallback in case a resource hangs indefinitely
+setTimeout(hideLoader, 7000);
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -146,8 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0,
+    rootMargin: '1000px 0px 1000px 0px'
   });
 
   revealElements.forEach(el => revealObserver.observe(el));
