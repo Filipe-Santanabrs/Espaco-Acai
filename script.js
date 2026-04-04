@@ -5,43 +5,53 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ============ CLICK RIPPLE EFFECT ============
+  // ============ CLICK RIPPLE EFFECT (optimized: reuse pool) ============
+  const ripplePool = [];
+  const MAX_RIPPLES = 3;
+  for (let i = 0; i < MAX_RIPPLES; i++) {
+    const r = document.createElement('div');
+    r.className = 'click-ripple';
+    r.style.display = 'none';
+    document.body.appendChild(r);
+    ripplePool.push(r);
+  }
+  let rippleIdx = 0;
   document.addEventListener('click', (e) => {
-    const ripple = document.createElement('div');
-    ripple.className = 'click-ripple';
+    const ripple = ripplePool[rippleIdx % MAX_RIPPLES];
+    rippleIdx++;
+    ripple.style.display = 'none';
+    // Force reflow to restart animation
+    void ripple.offsetWidth;
     ripple.style.left = e.clientX + 'px';
     ripple.style.top = e.clientY + 'px';
-    document.body.appendChild(ripple);
-    ripple.addEventListener('animationend', () => ripple.remove());
+    ripple.style.display = '';
+    ripple.style.animation = 'none';
+    void ripple.offsetWidth;
+    ripple.style.animation = '';
   });
 
-  // ============ HEADER SCROLL EFFECT ============
+  // ============ HEADER SCROLL + ACTIVE NAV (consolidated, rAF-throttled) ============
   const header = document.getElementById('header');
   const headerNav = document.getElementById('header-nav');
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = headerNav ? headerNav.querySelectorAll('a[href^="#"]') : [];
   
-  const updateHeader = () => {
+  let scrollTicking = false;
+
+  const onScroll = () => {
+    // Header effect
     if (window.scrollY > 60) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
     }
-  };
 
-  window.addEventListener('scroll', updateHeader, { passive: true });
-  updateHeader();
-
-  // ============ ACTIVE NAV LINK ON SCROLL ============
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = headerNav ? headerNav.querySelectorAll('a[href^="#"]') : [];
-
-  const updateActiveNav = () => {
+    // Active nav link
     const scrollPos = window.scrollY + 200;
-    
     sections.forEach(section => {
       const top = section.offsetTop;
       const height = section.offsetHeight;
       const id = section.getAttribute('id');
-      
       if (scrollPos >= top && scrollPos < top + height) {
         navLinks.forEach(link => {
           link.classList.remove('active');
@@ -51,9 +61,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
     });
+
+    scrollTicking = false;
   };
 
-  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      requestAnimationFrame(onScroll);
+      scrollTicking = true;
+    }
+  }, { passive: true });
+
+  // Initial call
+  onScroll();
 
   // ============ MOBILE MENU ============
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -256,81 +276,71 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(initStatusModal, 800);
   }
 
-  // ============ PARALLAX SUBTLE EFFECT ON HERO LEAVES ============
-  const heroLeaves = document.querySelectorAll('.hero-leaf');
-  
-  if (heroLeaves.length > 0) {
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      if (scrollY < window.innerHeight) {
-        heroLeaves.forEach((leaf, i) => {
-          const speed = 0.02 + (i * 0.01);
-          leaf.style.transform = `translateY(${scrollY * speed}px)`;
-        });
-      }
-    }, { passive: true });
-  }
+  // ============ PARALLAX ON HERO LEAVES — REMOVED ============
+  // Parallax JS was conflicting with CSS @keyframes (floatLeaf1/2/3)
+  // by overwriting transform on every scroll frame.
+  // The CSS animations alone provide the intended visual effect.
 
-  // ============ COUNTER ANIMATION FOR STORY HIGHLIGHTS ============
+  // ============ COUNTER ANIMATION (IntersectionObserver — runs once) ============
   const highlightNumbers = document.querySelectorAll('.story-highlight-number');
-  let highlightsAnimated = false;
 
-  const animateCounters = () => {
-    if (highlightsAnimated) return;
+  if (highlightNumbers.length > 0) {
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          highlightNumbers.forEach(el => {
+            const finalText = el.textContent;
+            const match = finalText.match(/(\d+)/);
+            if (!match) return;
+            
+            const finalNum = parseInt(match[0]);
+            const suffix = finalText.replace(match[0], '');
+            let current = 0;
+            const increment = Math.ceil(finalNum / 40);
+            const duration = 1200;
+            const stepTime = duration / (finalNum / increment);
+
+            const counter = setInterval(() => {
+              current += increment;
+              if (current >= finalNum) {
+                current = finalNum;
+                clearInterval(counter);
+              }
+              el.textContent = current + suffix;
+            }, stepTime);
+          });
+          observer.disconnect(); // One-shot: never runs again
+        }
+      });
+    }, { threshold: 0.3 });
 
     const storySection = document.getElementById('historia');
-    if (!storySection) return;
+    if (storySection) counterObserver.observe(storySection);
+  }
 
-    const rect = storySection.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.8) {
-      highlightsAnimated = true;
-      
-      highlightNumbers.forEach(el => {
-        const finalText = el.textContent;
-        const match = finalText.match(/(\d+)/);
-        if (!match) return;
+  // ============ TILT EFFECT ON MENU CARDS (desktop only) ============
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  if (!isTouchDevice) {
+    const menuCardElements = document.querySelectorAll('.menu-card');
+    menuCardElements.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / centerY * -3;
+        const rotateY = (x - centerX) / centerX * 3;
         
-        const finalNum = parseInt(match[0]);
-        const suffix = finalText.replace(match[0], '');
-        let current = 0;
-        const increment = Math.ceil(finalNum / 40);
-        const duration = 1200;
-        const stepTime = duration / (finalNum / increment);
-
-        const counter = setInterval(() => {
-          current += increment;
-          if (current >= finalNum) {
-            current = finalNum;
-            clearInterval(counter);
-          }
-          el.textContent = current + suffix;
-        }, stepTime);
+        card.style.transform = `translateY(-8px) perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       });
-    }
-  };
 
-  window.addEventListener('scroll', animateCounters, { passive: true });
-
-  // ============ TILT EFFECT ON MENU CARDS ============
-  const menuCardElements = document.querySelectorAll('.menu-card');
-
-  menuCardElements.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = (y - centerY) / centerY * -3;
-      const rotateY = (x - centerX) / centerX * 3;
-      
-      card.style.transform = `translateY(-8px) perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) perspective(800px) rotateX(0) rotateY(0)';
+      });
     });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'translateY(0) perspective(800px) rotateX(0) rotateY(0)';
-    });
-  });
+  }
 
   // ============ AÇAÍ BUILDER ============
   const builderOverlay = document.getElementById('builder-overlay');
@@ -690,26 +700,32 @@ document.addEventListener('DOMContentLoaded', () => {
   if (slider) {
     let isDown = false;
     let startX;
-    let scrollLeft;
+    let scrollLeftPos;
     let animationId;
+    let sliderVisible = false;
     
-    // Duplicate the content to create a seamless infinite loop
-    slider.innerHTML += slider.innerHTML;
+    // Duplicate content using cloneNode (more efficient than innerHTML +=)
+    const originalCards = [...slider.children];
+    originalCards.forEach(card => {
+      slider.appendChild(card.cloneNode(true));
+    });
 
     const startAutoScroll = () => {
       // Cancel any existing frame to prevent speed-up
       cancelAnimationFrame(animationId);
       
       const scrollStep = () => {
-        if (!isDown) {
-          slider.scrollLeft += 1; // Smooth speed: 1px per frame (~60px per sec)
+        if (!isDown && sliderVisible) {
+          slider.scrollLeft += 1;
           
-          // If we scrolled exactly halfway (past the original content), reset to 0 seamlessly
           if (slider.scrollLeft >= slider.scrollWidth / 2) {
             slider.scrollLeft = 0;
           }
         }
-        animationId = requestAnimationFrame(scrollStep);
+        // Only continue loop if slider is visible
+        if (sliderVisible) {
+          animationId = requestAnimationFrame(scrollStep);
+        }
       };
       
       animationId = requestAnimationFrame(scrollStep);
@@ -717,29 +733,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const stopAutoScroll = () => cancelAnimationFrame(animationId);
 
-    // Initial start
-    startAutoScroll();
+    // Use IntersectionObserver to only run animation when visible
+    const sliderObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        sliderVisible = entry.isIntersecting;
+        if (sliderVisible) {
+          startAutoScroll();
+        } else {
+          stopAutoScroll();
+        }
+      });
+    }, { threshold: 0.1 });
+    sliderObserver.observe(slider);
 
     slider.addEventListener('mousedown', (e) => {
       isDown = true;
       stopAutoScroll();
       slider.style.cursor = 'grabbing';
       startX = e.pageX - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
+      scrollLeftPos = slider.scrollLeft;
     });
 
     slider.addEventListener('mouseleave', () => {
       if (isDown) {
         isDown = false;
         slider.style.cursor = 'grab';
-        startAutoScroll();
+        if (sliderVisible) startAutoScroll();
       }
     });
 
     slider.addEventListener('mouseup', () => {
       isDown = false;
       slider.style.cursor = 'grab';
-      startAutoScroll();
+      if (sliderVisible) startAutoScroll();
     });
 
     slider.addEventListener('mousemove', (e) => {
@@ -747,12 +773,12 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const x = e.pageX - slider.offsetLeft;
       const walk = (x - startX) * 2; 
-      slider.scrollLeft = scrollLeft - walk;
+      slider.scrollLeft = scrollLeftPos - walk;
     });
 
     // Pause on touch for mobile users
     slider.addEventListener('touchstart', stopAutoScroll, { passive: true });
-    slider.addEventListener('touchend', startAutoScroll, { passive: true });
+    slider.addEventListener('touchend', () => { if (sliderVisible) startAutoScroll(); }, { passive: true });
 
     // Disable default image drag
     slider.querySelectorAll('img').forEach(img => {

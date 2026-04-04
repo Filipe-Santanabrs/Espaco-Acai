@@ -82,13 +82,15 @@
   --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* === Custom Cursor === */
+/* === Custom Cursor (desktop only) === */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-body {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='9' fill='none' stroke='%235B1A8A' stroke-width='1.5' opacity='0.8'/%3E%3Ccircle cx='10' cy='10' r='3' fill='%232ECC40'/%3E%3C/svg%3E") 10 10, auto;
+@media (pointer: fine) {
+  body {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='9' fill='none' stroke='%235B1A8A' stroke-width='1.5' opacity='0.8'/%3E%3Ccircle cx='10' cy='10' r='3' fill='%232ECC40'/%3E%3C/svg%3E") 10 10, auto;
+  }
 }
 
 /* === Custom Scrollbar === */
@@ -112,8 +114,10 @@ body {
   background: rgba(155, 79, 213, 0.6);
 }
 
-a, button, [role="button"], input[type="submit"], .clickable {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='9' fill='none' stroke='%23FF6B2C' stroke-width='1.5' opacity='0.8'/%3E%3Ccircle cx='10' cy='10' r='3' fill='%23FF8A50'/%3E%3C/svg%3E") 10 10, pointer;
+@media (pointer: fine) {
+  a, button, [role="button"], input[type="submit"], .clickable {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='9' fill='none' stroke='%23FF6B2C' stroke-width='1.5' opacity='0.8'/%3E%3Ccircle cx='10' cy='10' r='3' fill='%23FF8A50'/%3E%3C/svg%3E") 10 10, pointer;
+  }
 }
 
 /* === Global Glassmorphism & Hover FX === */
@@ -695,6 +699,7 @@ ul {
   filter: blur(40px);
   z-index: 0;
   animation: heroGlow 4s ease-in-out infinite;
+  will-change: opacity;
 }
 
 @keyframes heroGlow {
@@ -1125,7 +1130,7 @@ ul {
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
+  /* backdrop-filter moved to desktop-only for performance */
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition-medium), box-shadow var(--transition-medium);
   position: relative;
@@ -1402,7 +1407,7 @@ ul {
   background: rgba(29, 14, 54, 0.5);
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
+  /* backdrop-filter moved to desktop-only for performance */
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition-medium), box-shadow var(--transition-medium);
 }
@@ -1703,7 +1708,7 @@ ul {
   }
 
   .hero-title {
-    font-size: 3.8rem;
+    font-size: 2.2rem;
   }
 
   .hero-subtitle {
@@ -1816,8 +1821,8 @@ ul {
 
 @media (max-width: 480px) {
   .hero-title {
-    font-size: 4.2rem;
-    line-height: 1.1;
+    font-size: 2rem;
+    line-height: 1.15;
   }
 
   .hero-subtitle {
@@ -1866,6 +1871,65 @@ ul {
   .story-highlights {
     flex-direction: column;
     gap: 20px;
+  }
+}
+
+/* ==========================================
+   MOBILE PERFORMANCE OPTIMIZATIONS
+   ========================================== */
+@media (max-width: 768px) {
+  /* Reduce backdrop-filter intensity on mobile — most expensive CSS property */
+  .header.scrolled {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .hero-float-badge {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* Reduce hero glow blur and simplify animation on mobile */
+  .hero-image-glow {
+    filter: blur(20px);
+    animation: heroGlowMobile 6s ease-in-out infinite;
+  }
+
+  @keyframes heroGlowMobile {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+  }
+
+  /* Pause decorative leaf animations on mobile (opacity 0.12 = nearly invisible) */
+  .hero-leaf {
+    animation: none !important;
+  }
+
+  /* Simplify float badge animation on mobile */
+  .hero-float-badge {
+    animation: none;
+  }
+
+  /* Reduce WhatsApp float animation to opacity-only */
+  .whatsapp-float {
+    animation: none;
+  }
+
+  /* Add backdrop-filter for cards only on desktop */
+  .menu-card,
+  .visit-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* Desktop-only backdrop-filter for cards */
+@media (min-width: 769px) {
+  .menu-card {
+    backdrop-filter: blur(10px);
+  }
+  .visit-card {
+    backdrop-filter: blur(10px);
   }
 }
 
@@ -2607,36 +2671,4 @@ ul {
   filter: drop-shadow(0 0 8px rgba(0,0,0,0.5));
 }
 
-/* ==========================================
-   SCROLL REVEAL (INTERSECTION)
-   ========================================== */
-.reveal, .reveal-left, .reveal-right, .reveal-scale {
-  opacity: 0;
-  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.reveal {
-  transform: translateY(30px);
-}
-.reveal-left {
-  transform: translateX(-40px);
-}
-.reveal-right {
-  transform: translateX(40px);
-}
-.reveal-scale {
-  transform: translateY(20px) scale(0.92);
-}
-
-.revealed.active {
-  opacity: 1;
-  transform: translate(0) scale(1);
-}
-
-/* Delays */
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
-.delay-4 { transition-delay: 0.4s; }
-.delay-5 { transition-delay: 0.5s; }
-.delay-6 { transition-delay: 0.6s; }
+/* Duplicate reveal rules removed — originals at L222-L272 are canonical */
