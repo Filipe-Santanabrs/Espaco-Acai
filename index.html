@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espaço Açaí & Gelatos — Açaí Premium e Gelatos Artesanais</title>
+  <meta name="description" content="Espaço Açaí & Gelatos: açaí premium, gelatos artesanais e sabores autênticos. Monte seu açaí perfeito, explore nosso cardápio e faça seu pedido pelo WhatsApp.">
+  <meta name="keywords" content="açaí, gelato, açaí premium, gelato artesanal, Brejo MA, açaí delivery">
+  <meta name="author" content="Espaço Açaí & Gelatos">
+  <meta property="og:title" content="Espaço Açaí & Gelatos — Açaí Premium e Gelatos Artesanais">
+  <meta property="og:description" content="O seu açaí perfeito do dia. Explore nosso catálogo, escolha seus favoritos e faça seu pedido.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body>
+
+  <!-- ============ SVG SPRITES ============ -->
+  <svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-acai" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Cream -->
+      <path d="M5 12C5 8.134 8.134 5 12 5C15.866 5 19 8.134 19 12" fill="#7B2FB5"/>
+      <!-- Toppings -->
+      <circle cx="15.5" cy="8.5" r="1.5" fill="#F26822" stroke="none"/>
+      <circle cx="8.5" cy="8.5" r="1.5" fill="#00b16a" stroke="none"/>
+      <!-- Bowl -->
+      <path d="M3 12H21C21 16.971 16.971 21 12 21C7.029 21 3 16.971 3 12Z" fill="rgba(242,104,34,0.15)"/>
+      <!-- Base -->
+      <path d="M9 21H15"/>
+    </symbol>
+  </svg>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="header">
+    <div class="container">
+      <a href="#" class="header-logo" id="header-logo">
+        <img src="assets/logo.png" alt="Logo Espaço Açaí & Gelatos" class="header-logo-img">
+        <div class="header-logo-text">
+          <span class="green">Espaço</span> <span class="purple">Açaí</span> <span class="green">&</span> <span class="orange">Gelatos</span>
+        </div>
+      </a>
+
+      <nav class="header-nav" id="header-nav">
+        <a href="#hero" class="active">Início</a>
+        <a href="#instagram-section">Novidades</a>
+        <a href="#cardapio">Catálogo</a>
+        <a href="#historia">Sobre Nós</a>
+        <a href="#visita">Localização</a>
+        <a href="#montar" class="nav-cta" id="nav-btn-montar">Montar meu Açaí</a>
+      </nav>
+
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ MOBILE MENU OVERLAY ============ -->
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+    <nav>
+      <a href="#hero">Início</a>
+      <a href="#instagram-section">Novidades</a>
+      <a href="#cardapio">Catálogo</a>
+      <a href="#historia">Sobre Nós</a>
+      <a href="#visita">Localização</a>
+      <a href="#montar" id="mobile-btn-montar">Montar meu Açaí</a>
+    </nav>
+  </div>
+
+  <!-- ============ HERO SECTION ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-texture"></div>
+
+    <!-- Floating SVG Leaves -->
+    <svg class="hero-leaf hero-leaf-1" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M40 0C40 0 0 30 0 60C0 90 20 100 40 100C60 100 80 90 80 60C80 30 40 0 40 0Z" fill="#2ECC40"/>
+      <path d="M40 10L40 90" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+      <path d="M40 30L20 50" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+      <path d="M40 50L60 65" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+    </svg>
+    <svg class="hero-leaf hero-leaf-2" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M40 0C40 0 0 30 0 60C0 90 20 100 40 100C60 100 80 90 80 60C80 30 40 0 40 0Z" fill="#9B4FD5"/>
+      <path d="M40 10L40 90" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+    </svg>
+    <svg class="hero-leaf hero-leaf-3" viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M30 0C30 0 0 25 0 45C0 70 15 80 30 80C45 80 60 70 60 45C60 25 30 0 30 0Z" fill="#2ECC40"/>
+      <path d="M30 10L30 70" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+    </svg>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge reveal">Açaí & Gelatos</div>
+
+        <h1 class="hero-title reveal delay-1">
+          O seu açaí<br>
+          <span class="orange">perfeito</span> do dia
+        </h1>
+        <p class="hero-subtitle reveal delay-3">
+          Explore nosso catálogo, escolha seus favoritos e faça seu pedido de forma rápida e prática.
+        </p>
+        <div class="hero-buttons reveal delay-4">
+          <a href="#montar" class="btn btn-orange" id="btn-montar-acai">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            Montar meu Açaí
+          </a>
+          <a href="#cardapio" class="btn btn-outline" id="btn-ver-cardapio">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            Ver Cardápio
+          </a>
+
+        </div>
+      </div>
+
+      <div class="hero-image-wrapper reveal-right delay-2">
+        <div class="hero-image-glow"></div>
+        <div class="hero-image-container">
+          <img src="assets/hero-person.png" alt="Tigela de açaí premium com morango, banana e granola">
+        </div>
+        <!-- Floating badges -->
+        <div class="hero-float-badge badge-top">
+          <span class="badge-icon">⭐</span>
+          <div class="badge-text">
+            <strong>4.9 / 5.0</strong>
+            <small>+200 avaliações</small>
+          </div>
+        </div>
+        <div class="hero-float-badge badge-bottom">
+          <span class="badge-icon" style="display: flex; align-items: center;"><svg width="1em" height="1em"><use href="#icon-acai"/></svg></span>
+          <div class="badge-text">
+            <strong>100% Natural</strong>
+            <small>Ingredientes selecionados</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WAVE: Hero → Instagram ============ -->
+  <div class="wave-separator" style="background: var(--purple-deep);">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 C360,100 720,10 1080,70 C1260,95 1380,50 1440,40 L1440,120 L0,120 Z" fill="var(--dark-bg)"/>
+    </svg>
+  </div>
+
+  <!-- ============ INSTAGRAM SECTION ============ -->
+  <section class="instagram-section section-dark" id="instagram-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag insta-tag"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 2px; margin-bottom: 1px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg> <span class="insta-gradient-text">Instagram</span></div>
+        <h2 class="section-title">Siga-nos no <span class="insta-gradient-text">Instagram</span></h2>
+        <p class="section-subtitle">Fique por dentro das novidades, promoções exclusivas e novos sabores. Acompanhe nosso dia a dia!</p>
+      </div>
+
+      <div class="instagram-grid reveal" id="instagram-slider">
+        <div class="insta-card">
+          <img src="https://drive.google.com/thumbnail?id=1P8Vex084RUcUaVxrZ_5yMFngox3IfS8b&sz=w1200" alt="Post 1">
+          <div class="insta-card-overlay">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </div>
+        </div>
+        <div class="insta-card">
+          <img src="https://drive.google.com/thumbnail?id=1xOcHgYeKVxiPZlAKqK7Mr5tKQsozdVxv&sz=w1200" alt="Post 2">
+          <div class="insta-card-overlay">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </div>
+        </div>
+        <div class="insta-card">
+          <img src="https://drive.google.com/thumbnail?id=1YGcQ8mrGuLaytWwsRSkikpwYwvtsPMVy&sz=w1200" alt="Post 3">
+          <div class="insta-card-overlay">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </div>
+        </div>
+        <div class="insta-card">
+          <img src="https://drive.google.com/thumbnail?id=1yMIZomhs6Uyrxgc7VLZzQyDCDbfqphcv&sz=w1200" alt="Post 4">
+          <div class="insta-card-overlay">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </div>
+        </div>
+        <div class="insta-card">
+          <img src="https://drive.google.com/thumbnail?id=1q-iW39ofu5-Ieso13PahoKFFwF230SJ2&sz=w1200" alt="Post 5">
+          <div class="insta-card-overlay">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </div>
+        </div>
+        <div class="insta-card">
+          <img src="https://drive.google.com/thumbnail?id=1fXGSrNAgNLApNLUmyae1cP1jbdtzT1w_&sz=w1200" alt="Post 6">
+          <div class="insta-card-overlay">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="instagram-cta reveal delay-3">
+        <a href="https://www.instagram.com/espacoacaiegelatos/" target="_blank" rel="noopener" class="btn btn-glass" id="btn-instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          Ver mais no Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WAVE: Instagram → Cardápio ============ -->
+  <div class="wave-separator" style="background: #24143D;">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,50 C320,95 640,10 960,60 C1200,100 1360,30 1440,55 L1440,120 L0,120 Z" fill="var(--dark-bg)"/>
+    </svg>
+  </div>
+
+  <!-- ============ CARDÁPIO / MENU SECTION ============ -->
+  <section class="menu-section section-dark" id="cardapio">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag"><svg width="1em" height="1em" style="margin-right:4px;"><use href="#icon-acai"/></svg> Cardápio</div>
+        <h2 class="section-title">Nosso <span class="purple">Cardápio</span></h2>
+        <p class="section-subtitle">Descubra nossos sabores irresistíveis, preparados com ingredientes selecionados e muito carinho.</p>
+      </div>
+
+      <!-- Search -->
+      <div class="menu-search-wrapper reveal delay-1">
+        <svg class="menu-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+        </svg>
+        <input type="text" class="menu-search" id="menu-search" placeholder="Buscar no cardápio..." aria-label="Buscar no cardápio">
+      </div>
+
+      <!-- Categories -->
+      <div class="menu-categories reveal delay-2" id="menu-categories">
+        <button class="menu-cat-btn active" data-category="todos">Todos</button>
+        <button class="menu-cat-btn" data-category="acai-tradicional">Açaí Tradicional</button>
+        <button class="menu-cat-btn" data-category="acai-fit">Açaí Fit</button>
+        <button class="menu-cat-btn" data-category="gelatos">Gelatos</button>
+        <button class="menu-cat-btn" data-category="acompanhamentos">Acompanhamentos</button>
+        <button class="menu-cat-btn" data-category="bebidas">Bebidas</button>
+        <button class="menu-cat-btn" data-category="combos">Combos</button>
+      </div>
+
+      <!-- Menu Grid -->
+      <div class="menu-grid" id="menu-grid">
+        <!-- Card: Açaí no Copo -->
+        <div class="menu-card reveal-scale delay-1" data-category="acai-tradicional" data-name="Açaí no Copo">
+          <div class="menu-card-image">
+            <img src="assets/acai-copo.png" alt="Açaí no Copo Premium" loading="lazy">
+            <span class="menu-card-tag">Tradicional</span>
+          </div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-title">Açaí no Copo</h3>
+            <p class="menu-card-desc">Copo de açaí puro com até 3 acompanhamentos gratuitos à sua escolha.</p>
+            <div class="menu-card-footer">
+
+              <button class="menu-card-btn" id="btn-detalhes-acai-copo">Ver detalhes</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Açaí na Marmita -->
+        <div class="menu-card reveal-scale delay-2" data-category="acai-tradicional" data-name="Açaí na Marmita">
+          <div class="menu-card-image">
+            <img src="assets/acai-marmita.png" alt="Açaí na Marmita Premium" loading="lazy">
+            <span class="menu-card-tag">Tradicional</span>
+          </div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-title">Açaí na Marmita</h3>
+            <p class="menu-card-desc">Marmita de açaí puro com até 4 acompanhamentos gratuitos à sua escolha.</p>
+            <div class="menu-card-footer">
+
+              <button class="menu-card-btn" id="btn-detalhes-acai-marmita">Ver detalhes</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Gelato de Morango -->
+        <div class="menu-card reveal-scale delay-3" data-category="gelatos" data-name="Gelato de Morango">
+          <div class="menu-card-image">
+            <img src="assets/gelato-morango.png" alt="Gelato Artesanal de Morango" loading="lazy">
+            <span class="menu-card-tag tag-green">Gelato</span>
+          </div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-title">Gelato de Morango</h3>
+            <p class="menu-card-desc">Gelato artesanal sabor morango, servido em 2 bolas cremosas.</p>
+            <div class="menu-card-footer">
+
+              <button class="menu-card-btn" id="btn-detalhes-gelato-morango">Ver detalhes</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Gelato de Ninho com Nutella -->
+        <div class="menu-card reveal-scale delay-4" data-category="gelatos" data-name="Gelato de Ninho com Nutella">
+          <div class="menu-card-image">
+            <img src="assets/gelato-ninho.png" alt="Gelato Artesanal de Ninho com Nutella" loading="lazy">
+            <span class="menu-card-tag tag-green">Gelato</span>
+          </div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-title">Gelato de Ninho com Nutella</h3>
+            <p class="menu-card-desc">Gelato artesanal sabor leite ninho com creme de avelã, servido em 2 bolas.</p>
+            <div class="menu-card-footer">
+
+              <button class="menu-card-btn" id="btn-detalhes-gelato-ninho">Ver detalhes</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Água Mineral -->
+        <div class="menu-card reveal-scale delay-5" data-category="bebidas" data-name="Água Mineral">
+          <div class="menu-card-image" style="background: linear-gradient(135deg, #E8E0F0, #F5F0FA); display:flex; align-items:center; justify-content:center;">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#7B2FB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+            <span class="menu-card-tag tag-orange">Bebida</span>
+          </div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-title">Água Mineral</h3>
+            <p class="menu-card-desc">Água mineral sem gás 500ml. Refrescante e pura.</p>
+            <div class="menu-card-footer">
+
+              <button class="menu-card-btn" id="btn-detalhes-agua">Ver detalhes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WAVE: Cardápio → Nossa História ============ -->
+  <div class="wave-separator" style="background: #24143D;">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C240,90 480,5 720,50 C960,95 1200,15 1440,45 L1440,120 L0,120 Z" fill="var(--dark-bg)"/>
+    </svg>
+  </div>
+
+  <!-- ============ NOSSA HISTÓRIA SECTION ============ -->
+  <section class="story-section section-dark" id="historia">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-image-wrapper reveal-left">
+          <div class="story-image-frame">
+            <img src="assets/nossa-historia.png" alt="Interior acolhedor do Espaço Açaí & Gelatos" loading="lazy">
+          </div>
+          <div class="story-image-accent"></div>
+        </div>
+
+        <div class="story-content">
+          <div class="section-tag reveal">🌿 Nossa História</div>
+          <h2 class="section-title reveal delay-1">Uma paixão por <span class="green">sabores</span> autênticos</h2>
+          <p class="story-text reveal delay-2">
+            O Espaço Açaí & Gelatos nasceu da paixão por sabores autênticos e momentos de alegria. Acreditamos que um bom copo de açaí ou um gelato artesanal tem o poder de transformar o dia, conectar pessoas e inspirar novas ideias.
+          </p>
+          <p class="story-text reveal delay-3">
+            Trabalhamos apenas com ingredientes selecionados, garantindo frescor e qualidade em cada pedido. Cada detalhe, desde a escolha dos acompanhamentos até a finalização dos nossos gelatos, é pensado para oferecer a melhor experiência para você e sua família.
+          </p>
+          <div class="story-highlights reveal delay-4">
+            <div class="story-highlight-item">
+              <div class="story-highlight-number">100%</div>
+              <div class="story-highlight-label">Natural</div>
+            </div>
+            <div class="story-highlight-item">
+              <div class="story-highlight-number">200+</div>
+              <div class="story-highlight-label">Clientes felizes</div>
+            </div>
+            <div class="story-highlight-item">
+              <div class="story-highlight-number">5★</div>
+              <div class="story-highlight-label">Avaliação</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WAVE: Nossa História → Visita ============ -->
+  <div class="wave-separator" style="background: #24143D;">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,60 C240,110 480,5 720,45 C960,85 1200,10 1440,35 L1440,120 L0,120 Z" fill="var(--dark-bg)"/>
+    </svg>
+  </div>
+
+  <!-- ============ VISITA / LOCALIZAÇÃO SECTION ============ -->
+  <section class="visit-section section-dark" id="visita">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">📍 Localização</div>
+        <h2 class="section-title">Venha nos <span class="orange">Visitar</span></h2>
+        <p class="section-subtitle">Um ambiente acolhedor, perfeito para saborear um açaí, ler um livro ou encontrar amigos.</p>
+      </div>
+
+      <div class="visit-grid">
+        <div class="visit-info reveal-left">
+          <div class="visit-card">
+            <div class="visit-card-icon icon-purple">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="visit-card-content">
+              <h4>Endereço</h4>
+              <p>Avenida Sabino Câmara, S/N — Santo Antônio, Brejo — MA</p>
+            </div>
+          </div>
+
+          <div class="visit-card">
+            <div class="visit-card-icon icon-green">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="visit-card-content">
+              <h4>Horário de Funcionamento</h4>
+              <p>Segunda a Domingo, 16:30 às 22:00</p>
+            </div>
+          </div>
+
+          <div class="visit-card">
+            <div class="visit-card-icon icon-orange">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="visit-card-content">
+              <h4>Contato</h4>
+              <p>(98) 98508-0705</p>
+            </div>
+          </div>
+
+          <a href="https://www.google.com/maps/place/Espa%C3%A7o+Caf%C3%A9+%2F+Posto+IC/@-3.6798984,-42.7561749,19z" target="_blank" rel="noopener" class="btn btn-orange" id="btn-visit-whatsapp" style="align-self: flex-start; margin-top: 8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Abrir no Maps
+          </a>
+          <a href="https://wa.me/5598985080705" target="_blank" rel="noopener" class="btn btn-green" id="btn-visit-whatsapp-2" style="align-self: flex-start; margin-top: 4px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Fale Conosco
+          </a>
+        </div>
+
+        <div class="visit-map-wrapper reveal-right delay-2">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d796.6!2d-42.7561749!3d-3.6798984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7f2b30004c8beb1%3A0xee398ec87b2c791a!2sEspa%C3%A7o%20Caf%C3%A9%20%2F%20Posto%20IC!5e0!3m2!1spt-BR!2sbr!4v1" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Localização do Espaço Açaí & Gelatos no Google Maps">
+          </iframe>
+          <div class="visit-map-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WAVE: Visita → Footer ============ -->
+  <div class="wave-separator" style="background: #24143D;">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,45 C360,95 720,5 1080,55 C1260,85 1380,40 1440,50 L1440,120 L0,120 Z" fill="var(--darker-bg)"/>
+    </svg>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand-info">
+          <div class="footer-logo">
+            <img src="assets/logo.png" alt="Logo">
+            <div class="footer-logo-text">
+              <span class="green">Espaço</span> <span class="purple">Açaí</span> <span class="green">&</span> <span class="orange">Gelatos</span>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Sabores autênticos e momentos de alegria. Açaí 100% natural e gelatos artesanais preparados com carinho em Brejo — MA.
+          </p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/espacoacaiegelatos/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://wa.me/5598985080705" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h5>Contato</h5>
+          <ul>
+            <li><a href="tel:+5598985080705">(98) 98508-0705</a></li>
+            <li><a href="https://wa.me/5598985080705" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="https://www.instagram.com/espacoacaiegelatos/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="#visita">Localização</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom" style="justify-content: center;">
+        <span>© 2026 <span class="orange">Espaço Açaí & Gelatos</span>. Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ MODAL — STATUS DA LOJA ============ -->
+  <div class="status-modal-overlay" id="status-modal-overlay">
+    <div class="status-modal" id="status-modal">
+      <button class="status-modal-close" id="status-modal-close" aria-label="Fechar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="status-modal-icon">🏪</div>
+      <h2 class="status-modal-title" id="status-modal-title">Loja Aberta</h2>
+      <p class="status-modal-subtitle">Horário de Funcionamento</p>
+
+      <div class="status-modal-schedule" id="status-modal-schedule">
+        <div class="status-schedule-row" data-day="0">
+          <span class="status-day-name">Domingo</span>
+          <span class="status-day-hours">16:30 - 22:00</span>
+        </div>
+        <div class="status-schedule-row" data-day="1">
+          <span class="status-day-name">Segunda-feira</span>
+          <span class="status-day-hours">16:30 - 22:00</span>
+        </div>
+        <div class="status-schedule-row" data-day="2">
+          <span class="status-day-name">Terça-feira</span>
+          <span class="status-day-hours">16:30 - 22:00</span>
+        </div>
+        <div class="status-schedule-row" data-day="3">
+          <span class="status-day-name">Quarta-feira</span>
+          <span class="status-day-hours">16:30 - 22:00</span>
+        </div>
+        <div class="status-schedule-row" data-day="4">
+          <span class="status-day-name">Quinta-feira</span>
+          <span class="status-day-hours">16:30 - 22:00</span>
+        </div>
+        <div class="status-schedule-row" data-day="5">
+          <span class="status-day-name">Sexta-feira</span>
+          <span class="status-day-hours">16:30 - 22:00</span>
+        </div>
+        <div class="status-schedule-row" data-day="6">
+          <span class="status-day-name">Sábado</span>
+          <span class="status-day-hours">16:30 - 22:00</span>
+        </div>
+      </div>
+
+      <div class="status-modal-footer">
+        Fuso Horário: São Paulo
+      </div>
+
+      <button class="status-modal-btn" id="status-modal-ok">OK</button>
+    </div>
+  </div>
+
+  <!-- ============ MODAL — LOJA FECHADA ============ -->
+  <div class="closed-modal-overlay" id="closed-modal-overlay">
+    <div class="closed-modal" id="closed-modal">
+      <button class="closed-modal-close" id="closed-modal-close" aria-label="Fechar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="closed-modal-icon">🕐</div>
+      <h2 class="closed-modal-title">Loja Fechada</h2>
+      <p class="closed-modal-subtitle">Horário de Funcionamento</p>
+
+      <div class="closed-modal-schedule">
+        <div class="closed-schedule-row" data-day="1">
+          <span class="closed-day-name">Segunda-feira</span>
+          <span class="closed-day-hours">16:30 — 22:00</span>
+        </div>
+        <div class="closed-schedule-row" data-day="2">
+          <span class="closed-day-name">Terça-feira</span>
+          <span class="closed-day-hours">16:30 — 22:00</span>
+        </div>
+        <div class="closed-schedule-row" data-day="3">
+          <span class="closed-day-name">Quarta-feira</span>
+          <span class="closed-day-hours">16:30 — 22:00</span>
+        </div>
+        <div class="closed-schedule-row" data-day="4">
+          <span class="closed-day-name">Quinta-feira</span>
+          <span class="closed-day-hours">16:30 — 22:00</span>
+        </div>
+        <div class="closed-schedule-row" data-day="5">
+          <span class="closed-day-name">Sexta-feira</span>
+          <span class="closed-day-hours">16:30 — 22:00</span>
+        </div>
+        <div class="closed-schedule-row" data-day="6">
+          <span class="closed-day-name">Sábado</span>
+          <span class="closed-day-hours">16:30 — 22:00</span>
+        </div>
+        <div class="closed-schedule-row" data-day="0">
+          <span class="closed-day-name">Domingo</span>
+          <span class="closed-day-hours">16:30 — 22:00</span>
+        </div>
+      </div>
+
+      <p class="closed-modal-timezone">Fuso horário: Brasília (GMT-3)</p>
+
+      <button class="closed-modal-btn" id="closed-modal-ok">OK, entendi</button>
+    </div>
+  </div>
+
+  <!-- ============ BUILDER MODAL — MONTAR MEU AÇAÍ ============ -->
+  <div class="builder-overlay" id="builder-overlay">
+    <div class="builder-modal" id="builder-modal">
+
+      <!-- Header -->
+      <div class="builder-header">
+        <div class="builder-header-left">
+          <span class="builder-header-icon" style="display: flex; align-items: center;"><svg width="1.2em" height="1.2em"><use href="#icon-acai"/></svg></span>
+          <div>
+            <h2 class="builder-header-title">Monte seu Açaí</h2>
+            <p class="builder-header-sub" id="builder-step-label">Escolha o formato</p>
+          </div>
+        </div>
+        <button class="builder-close" id="builder-close" aria-label="Fechar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="builder-progress">
+        <div class="builder-progress-track">
+          <div class="builder-progress-fill" id="builder-progress-fill"></div>
+        </div>
+        <div class="builder-steps-dots">
+          <div class="builder-step-dot active" data-step="1"><span>1</span><small>Formato</small></div>
+          <div class="builder-step-dot" data-step="2"><span>2</span><small>Açaí</small></div>
+          <div class="builder-step-dot" data-step="3"><span>3</span><small>Gelatos</small></div>
+          <div class="builder-step-dot" data-step="4"><span>4</span><small>Frutas</small></div>
+          <div class="builder-step-dot" data-step="5"><span>5</span><small>Extras</small></div>
+          <div class="builder-step-dot" data-step="6"><span>6</span><small>Caldas</small></div>
+        </div>
+      </div>
+
+      <!-- Body — Steps -->
+      <div class="builder-body" id="builder-body">
+
+        <!-- STEP 1: Formato -->
+        <div class="builder-step active" data-builder-step="1">
+          <div class="builder-step-header">
+            <h3>📦 Escolha o Formato</h3>
+            <p class="builder-step-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> Selecione <strong>1 opção</strong></p>
+          </div>
+          <div class="builder-cards-grid cols-2">
+            <div class="builder-card" data-value="Marmita 300ml">
+              <div class="builder-card-icon">🥡</div>
+              <div class="builder-card-label">Marmita</div>
+              <div class="builder-card-sub">300ml</div>
+              <div class="builder-card-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="builder-card" data-value="Marmita 500ml">
+              <div class="builder-card-icon">🥡</div>
+              <div class="builder-card-label">Marmita</div>
+              <div class="builder-card-sub">500ml</div>
+              <div class="builder-card-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="builder-card" data-value="Marmita 700ml">
+              <div class="builder-card-icon">🥡</div>
+              <div class="builder-card-label">Marmita</div>
+              <div class="builder-card-sub">700ml</div>
+              <div class="builder-card-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="builder-card" data-value="Copo 300ml">
+              <div class="builder-card-icon">🥤</div>
+              <div class="builder-card-label">Copo</div>
+              <div class="builder-card-sub">300ml</div>
+              <div class="builder-card-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="builder-card" data-value="Copo 400ml">
+              <div class="builder-card-icon">🥤</div>
+              <div class="builder-card-label">Copo</div>
+              <div class="builder-card-sub">400ml</div>
+              <div class="builder-card-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+            <div class="builder-card" data-value="Copo 500ml">
+              <div class="builder-card-icon">🥤</div>
+              <div class="builder-card-label">Copo</div>
+              <div class="builder-card-sub">500ml</div>
+              <div class="builder-card-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: Açaí e Cremes -->
+        <div class="builder-step" data-builder-step="2">
+          <div class="builder-step-header">
+            <h3>🍨 Açaí e Cremes</h3>
+            <p class="builder-step-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> Selecione <strong>uma ou mais</strong> opções</p>
+          </div>
+          <div class="builder-cards-grid cols-3">
+            <div class="builder-card" data-value="Açaí Master"><div class="builder-card-icon" style="display: flex; justify-content: center; align-items: center;"><svg width="1.2em" height="1.2em"><use href="#icon-acai"/></svg></div><div class="builder-card-label">Açaí Master</div><div class="builder-card-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card" data-value="Açaí Fit"><div class="builder-card-icon">💪</div><div class="builder-card-label">Açaí Fit</div><div class="builder-card-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card" data-value="Creme de Maracujá"><div class="builder-card-icon">🍋</div><div class="builder-card-label">Creme de Maracujá</div><div class="builder-card-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card" data-value="Creme de Morango"><div class="builder-card-icon">🍓</div><div class="builder-card-label">Creme de Morango</div><div class="builder-card-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card" data-value="Creme de Cupuaçu"><div class="builder-card-icon">🟤</div><div class="builder-card-label">Creme de Cupuaçu</div><div class="builder-card-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card" data-value="Creme de Bacuri"><div class="builder-card-icon">🟡</div><div class="builder-card-label">Creme de Bacuri</div><div class="builder-card-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          </div>
+        </div>
+
+        <!-- STEP 3: Gelatos -->
+        <div class="builder-step" data-builder-step="3">
+          <div class="builder-step-header">
+            <h3>🍦 Gelatos</h3>
+            <p class="builder-step-hint optional"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> Opcional — selecione se desejar</p>
+          </div>
+          <p class="builder-group-label">Tradicionais</p>
+          <div class="builder-cards-grid cols-4">
+            <div class="builder-card compact" data-value="Flocos"><div class="builder-card-icon">🍨</div><div class="builder-card-label">Flocos</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card compact" data-value="Creme com Passas"><div class="builder-card-icon">🍨</div><div class="builder-card-label">Creme c/ Passas</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card compact" data-value="Chocobelga"><div class="builder-card-icon">🍫</div><div class="builder-card-label">Chocobelga</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card compact" data-value="Unicórnio"><div class="builder-card-icon">🦄</div><div class="builder-card-label">Unicórnio</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          </div>
+          <p class="builder-group-label">Cremes Especiais</p>
+          <div class="builder-cards-grid cols-3">
+            <div class="builder-card compact" data-value="Creme de Ovomaltine"><div class="builder-card-icon">🥣</div><div class="builder-card-label">Creme de Ovomaltine</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card compact" data-value="Creme de Oreo"><div class="builder-card-icon">🍪</div><div class="builder-card-label">Creme de Oreo</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card compact" data-value="Creme de Ninho"><div class="builder-card-icon">🥛</div><div class="builder-card-label">Creme de Ninho</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          </div>
+        </div>
+
+        <!-- STEP 4: Frutas -->
+        <div class="builder-step" data-builder-step="4">
+          <div class="builder-step-header">
+            <h3>🍓 Frutas</h3>
+            <p class="builder-step-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> Selecione <strong>uma ou mais</strong> opções</p>
+          </div>
+          <div class="builder-cards-grid cols-4">
+            <div class="builder-card" data-value="Banana"><div class="builder-card-icon">🍌</div><div class="builder-card-label">Banana</div><div class="builder-card-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card" data-value="Morango"><div class="builder-card-icon">🍓</div><div class="builder-card-label">Morango</div><div class="builder-card-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card" data-value="Kiwi"><div class="builder-card-icon">🥝</div><div class="builder-card-label">Kiwi</div><div class="builder-card-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card" data-value="Uva"><div class="builder-card-icon">🍇</div><div class="builder-card-label">Uva</div><div class="builder-card-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          </div>
+        </div>
+
+        <!-- STEP 5: Complementos -->
+        <div class="builder-step" data-builder-step="5">
+          <div class="builder-step-header">
+            <h3>🍫 Complementos</h3>
+            <p class="builder-step-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> Selecione <strong>uma ou mais</strong> opções</p>
+          </div>
+          <div class="builder-cards-grid cols-4">
+            <div class="builder-card compact" data-value="Cereja em Calda"><div class="builder-card-icon">🍒</div><div class="builder-card-label">Cereja em Calda</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card compact" data-value="Morango em Calda"><div class="builder-card-icon">🍓</div><div class="builder-card-label">Morango em Calda</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card compact" data-value="Doce de Leite"><div class="builder-card-icon">🍯</div><div class="builder-card-label">Doce de Leite</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card compact" data-value="Nutella"><div class="builder-card-icon">🫙</div><div class="builder-card-label">Nutella</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card compact" data-value="Marshmallow"><div class="builder-card-icon">☁️</div><div class="builder-card-label">Marshmallow</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card compact" data-value="Tapioca"><div class="builder-card-icon">⚪</div><div class="builder-card-label">Tapioca</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card compact" data-value="Flocos"><div class="builder-card-icon">🥣</div><div class="builder-card-label">Flocos</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card compact" data-value="M&M"><div class="builder-card-icon">🟣</div><div class="builder-card-label">M&amp;M</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card compact" data-value="Fine Amora"><div class="builder-card-icon">🫐</div><div class="builder-card-label">Fine Amora</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card compact" data-value="Fine Banana"><div class="builder-card-icon">🍌</div><div class="builder-card-label">Fine Banana</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card compact" data-value="Fine Dentadura"><div class="builder-card-icon">🦷</div><div class="builder-card-label">Fine Dentadura</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card compact" data-value="Jujuba"><div class="builder-card-icon">🍬</div><div class="builder-card-label">Jujuba</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card compact" data-value="Bala de Gelatina"><div class="builder-card-icon">🍭</div><div class="builder-card-label">Bala de Gelatina</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card compact" data-value="Cookies Branco"><div class="builder-card-icon">🍪</div><div class="builder-card-label">Cookies Branco</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          </div>
+        </div>
+
+        <!-- STEP 6: Caldas + Observações -->
+        <div class="builder-step" data-builder-step="6">
+          <div class="builder-step-header">
+            <h3>🍯 Caldas</h3>
+            <p class="builder-step-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> Selecione <strong>uma ou mais</strong> opções</p>
+          </div>
+          <div class="builder-cards-grid cols-3">
+            <div class="builder-card" data-value="Pistache"><div class="builder-card-icon">🟢</div><div class="builder-card-label">Pistache</div><div class="builder-card-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card" data-value="Mágica"><div class="builder-card-icon">✨</div><div class="builder-card-label">Mágica</div><div class="builder-card-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            <div class="builder-card" data-value="Mágica ao Leite"><div class="builder-card-icon">🥛</div><div class="builder-card-label">Mágica ao Leite</div><div class="builder-card-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+          </div>
+          <div class="builder-obs-wrapper">
+            <label for="builder-obs" class="builder-obs-label">📝 Observações <span>(Opcional)</span></label>
+            <textarea id="builder-obs" class="builder-obs-input" placeholder="Ex: Sem leite em pó" rows="3"></textarea>
+          </div>
+        </div>
+
+        <!-- STEP 7: Resumo -->
+        <div class="builder-step" data-builder-step="7">
+          <div class="builder-step-header">
+            <h3>📋 Resumo do Pedido</h3>
+            <p class="builder-step-hint">Confira suas escolhas antes de prosseguir</p>
+          </div>
+          <div id="builder-summary-list"></div>
+          <div class="builder-price-info" style="display: none;">
+            <div class="builder-price-info-icon">💰</div>
+            <div class="builder-price-info-text">
+              <strong>Preço base:</strong> 1kg = R$ 70,00
+            </div>
+          </div>
+          <div class="builder-summary-actions">
+            <button class="builder-btn-add" id="builder-add-another">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+              Adicionar outro Açaí
+            </button>
+          </div>
+          <p class="builder-summary-note">⚖️ <em>Aguardando pesagem para valor final.</em></p>
+        </div>
+
+        <!-- STEP 8: Entrega -->
+        <div class="builder-step" data-builder-step="8">
+          <div class="builder-step-header">
+            <h3>🚀 Forma de Entrega</h3>
+          </div>
+          <div class="builder-delivery-toggle">
+            <button class="builder-delivery-opt active" data-delivery="delivery">🛵 Delivery</button>
+            <button class="builder-delivery-opt" data-delivery="retirada">🏪 Retirada no Local</button>
+          </div>
+
+          <div class="builder-delivery-form" id="builder-delivery-fields">
+            <div class="builder-form-section">
+              <label class="builder-form-label">📍 Me informe qual região para calcular a taxa: <span class="required">*</span></label>
+              <div class="builder-region-options" id="builder-region-options">
+                <div class="builder-card compact" data-value="Centro" data-taxa="5,00"><div class="builder-card-label">Centro</div><div class="builder-card-sub">R$ 5,00</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+                <div class="builder-card compact" data-value="Arredores" data-taxa="7,00"><div class="builder-card-label">Arredores</div><div class="builder-card-sub">R$ 7,00</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+                <div class="builder-card compact" data-value="Zé Gomes" data-taxa="10,00"><div class="builder-card-label">Zé Gomes</div><div class="builder-card-sub">R$ 10,00</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+              </div>
+            </div>
+            <div class="builder-form-row">
+              <div class="builder-form-group"><label>Bairro <span class="required">*</span></label><input type="text" id="b-bairro" placeholder="Ex: Centro"></div>
+              <div class="builder-form-group"><label>Rua <span class="required">*</span></label><input type="text" id="b-rua" placeholder="Ex: Rua das Flores"></div>
+            </div>
+            <div class="builder-form-row">
+              <div class="builder-form-group small"><label>Número <span class="required">*</span></label><input type="text" id="b-numero" placeholder="Ex: 123"></div>
+              <div class="builder-form-group"><label>Complemento <span class="opt">(Opcional)</span></label><input type="text" id="b-complemento" placeholder="Ex: Apto 42, Bloco B"></div>
+            </div>
+            <div class="builder-form-group"><label>Ponto de Referência <span class="opt">(Opcional)</span></label><input type="text" id="b-referencia" placeholder="Ex: Próximo ao mercado"></div>
+          </div>
+
+          <div class="builder-form-section" style="margin-top: 28px;">
+            <label class="builder-form-label">💳 Forma de Pagamento <span class="required">*</span></label>
+            <div class="builder-payment-options" id="builder-payment-options">
+              <div class="builder-card compact" data-value="Pix"><div class="builder-card-icon">📱</div><div class="builder-card-label">Pix</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+              <div class="builder-card compact" data-value="Dinheiro"><div class="builder-card-icon">💵</div><div class="builder-card-label">Dinheiro</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+              <div class="builder-card compact" data-value="Cartão"><div class="builder-card-icon">💳</div><div class="builder-card-label">Cartão</div><div class="builder-card-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="builder-footer">
+        <button class="builder-btn-back" id="builder-btn-back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Voltar
+        </button>
+        <button class="builder-btn-next" id="builder-btn-next">
+          Avançar
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <a href="#" id="nivano-instagram-link" target="_blank" rel="noopener" class="nivano-credit">
+        <span class="nivano-text">Web site desenvolvido pela equipe Nirvano</span>
+        <img src="assets/nivano-logo-optimized.png" alt="Nivano Logo" class="nivano-logo-img" loading="lazy">
+      </a>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5598985080705" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Fale conosco no WhatsApp">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script src="script.js" charset="UTF-8"></script>
+</body>
+</html>
