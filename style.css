@@ -1913,29 +1913,25 @@ ul {
    MOBILE PERFORMANCE OPTIMIZATIONS
    ========================================== */
 @media (max-width: 768px) {
-  /* Reduce backdrop-filter intensity on mobile — most expensive CSS property */
+  /* ELIMINATE all backdrop-filter on mobile — replaced with solid backgrounds */
   .header.scrolled {
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(29, 14, 54, 0.95);
   }
 
   .hero-float-badge {
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(29, 14, 54, 0.92);
   }
 
-  /* Reduce hero glow blur and simplify animation on mobile */
+  /* Completely disable hero glow on mobile — blur(20px) is still very expensive */
   .hero-image-glow {
-    filter: blur(20px);
-    animation: heroGlowMobile 6s ease-in-out infinite;
+    display: none !important;
   }
 
-  @keyframes heroGlowMobile {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 0.8; }
-  }
-
-  /* Pause decorative leaf animations on mobile (opacity 0.12 = nearly invisible) */
+  /* Pause decorative leaf animations on mobile */
   .hero-leaf {
     animation: none !important;
   }
@@ -1945,16 +1941,21 @@ ul {
     animation: none;
   }
 
-  /* Reduce WhatsApp float animation to opacity-only */
+  /* Reduce WhatsApp float animation to none */
   .whatsapp-float {
     animation: none;
   }
 
-  /* Add backdrop-filter for cards only on desktop */
+  /* Eliminate backdrop-filter from cards on mobile */
   .menu-card,
   .visit-card {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+
+  /* Disable transitions on reveal for faster paint — use instant show */
+  .reveal, .reveal-left, .reveal-right, .reveal-scale {
+    transition-duration: 0.3s;
   }
 }
 
@@ -2748,13 +2749,13 @@ html.is-loading, body.is-loading {
   background-color: var(--white);
   padding: 12px;
   animation: pulseLogo 2s infinite ease-in-out;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
   object-fit: contain;
 }
 
 @keyframes pulseLogo {
   0% { transform: scale(0.95); opacity: 0.8; }
-  50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 20px rgba(155, 79, 213, 0.4)); }
+  50% { transform: scale(1.05); opacity: 1; }
   100% { transform: scale(0.95); opacity: 0.8; }
 }
 
@@ -2772,11 +2773,12 @@ html.is-loading, body.is-loading {
   to { transform: rotate(360deg); }
 }
 
-/* === Performance Hacks below the fold === */
-.menu-section, .story-section, .visit-section, .footer {
-  content-visibility: auto;
-  contain-intrinsic-size: 800px;
-}
+/* === content-visibility: auto REMOVED ===
+   This was the ROOT CAUSE of sections 'unloading' on Android.
+   Android WebView/Chrome discards rendered layers aggressively when
+   content-visibility: auto hides sections. Re-rendering on scroll-back
+   causes the visual 'reload' effect on Samsung A32 and similar devices.
+   iPhone Safari caches composited layers better, masking the problem. */
 
 /* Disable body gradients pseudo-elements heavily impacting mobile composite */
 @media (max-width: 768px) {

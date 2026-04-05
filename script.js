@@ -35,7 +35,7 @@ setTimeout(hideLoader, 7000);
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ============ CLICK RIPPLE EFFECT (optimized: reuse pool) ============
+  // ============ CLICK RIPPLE EFFECT (optimized: reuse pool, desktop only) ============
   const ripplePool = [];
   const MAX_RIPPLES = 3;
   for (let i = 0; i < MAX_RIPPLES; i++) {
@@ -46,19 +46,24 @@ document.addEventListener('DOMContentLoaded', () => {
     ripplePool.push(r);
   }
   let rippleIdx = 0;
-  document.addEventListener('click', (e) => {
-    const ripple = ripplePool[rippleIdx % MAX_RIPPLES];
-    rippleIdx++;
-    ripple.style.display = 'none';
-    // Force reflow to restart animation
-    void ripple.offsetWidth;
-    ripple.style.left = e.clientX + 'px';
-    ripple.style.top = e.clientY + 'px';
-    ripple.style.display = '';
-    ripple.style.animation = 'none';
-    void ripple.offsetWidth;
-    ripple.style.animation = '';
-  });
+  // Disable costly reflow-causing ripples on touch devices (mobile performance)
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  
+  if (!isTouchDevice) {
+    document.addEventListener('click', (e) => {
+      const ripple = ripplePool[rippleIdx % MAX_RIPPLES];
+      rippleIdx++;
+      ripple.style.display = 'none';
+      // Force reflow to restart animation
+      void ripple.offsetWidth;
+      ripple.style.left = e.clientX + 'px';
+      ripple.style.top = e.clientY + 'px';
+      ripple.style.display = '';
+      ripple.style.animation = 'none';
+      void ripple.offsetWidth;
+      ripple.style.animation = '';
+    });
+  }
 
   // ============ HEADER SCROLL + ACTIVE NAV (consolidated, rAF-throttled) ============
   const header = document.getElementById('header');
@@ -158,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, {
     threshold: 0,
-    rootMargin: '1000px 0px 1000px 0px'
+    rootMargin: '-30px 0px 0px 0px' // FIXED: Was '1000px...' triggering all at once
   });
 
   revealElements.forEach(el => revealObserver.observe(el));
@@ -349,8 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============ TILT EFFECT ON MENU CARDS (desktop only) ============
-  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
+  
   if (!isTouchDevice) {
     const menuCardElements = document.querySelectorAll('.menu-card');
     menuCardElements.forEach(card => {
@@ -744,6 +748,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const startAutoScroll = () => {
+      // Opt-out of auto-scroll on mobile since hardware is weaker and users can swipe
+      if (isTouchDevice || window.innerWidth <= 768) return;
+      
       // Cancel any existing frame to prevent speed-up
       cancelAnimationFrame(animationId);
       
@@ -770,7 +777,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sliderObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         sliderVisible = entry.isIntersecting;
-        if (sliderVisible) {
+        if (sliderVisible && !isTouchDevice && window.innerWidth > 768) {
           startAutoScroll();
         } else {
           stopAutoScroll();
