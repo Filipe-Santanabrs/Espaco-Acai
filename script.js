@@ -383,7 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (builderOverlay) {
     let currentStep = 1;
-    const totalSteps = 6;
+    const totalSteps = 7;
     const orders = [];
     let currentOrder = {};
     let deliveryType = 'delivery';
@@ -396,12 +396,13 @@ document.addEventListener('DOMContentLoaded', () => {
       3: 'Gelatos (opcional)',
       4: 'Escolha as frutas',
       5: 'Complementos',
-      6: 'Caldas e observações',
-      7: 'Resumo do pedido',
-      8: 'Forma de entrega'
+      6: 'Coberturas e caldas',
+      7: 'Adicionais (opcional)',
+      8: 'Resumo do pedido',
+      9: 'Forma de entrega'
     };
 
-    const stepKeys = { 1: 'formato', 2: 'acai', 3: 'gelatos', 4: 'frutas', 5: 'complementos', 6: 'caldas' };
+    const stepKeys = { 1: 'formato', 2: 'acai', 3: 'gelatos', 4: 'frutas', 5: 'complementos', 6: 'coberturas', 7: 'adicionais' };
 
     // Open builder
     document.querySelectorAll('a[href="#montar"]').forEach(btn => {
@@ -442,14 +443,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (activeStep) activeStep.classList.add('active');
 
       // Progress
-      const progressPct = currentStep <= 6 ? (currentStep / totalSteps) * 100 : 100;
+      const progressPct = currentStep <= 7 ? (currentStep / totalSteps) * 100 : 100;
       builderProgressFill.style.width = progressPct + '%';
 
       // Dots
       document.querySelectorAll('.builder-step-dot').forEach(dot => {
         const s = parseInt(dot.dataset.step);
         dot.classList.remove('active', 'done');
-        if (s === currentStep && currentStep <= 6) dot.classList.add('active');
+        if (s === currentStep && currentStep <= 7) dot.classList.add('active');
         else if (s < currentStep) dot.classList.add('done');
       });
 
@@ -460,10 +461,10 @@ document.addEventListener('DOMContentLoaded', () => {
       builderBtnBack.classList.toggle('hidden', currentStep === 1);
       builderBtnNext.classList.remove('whatsapp-btn');
 
-      if (currentStep === 7) {
+      if (currentStep === 8) {
         builderBtnNext.innerHTML = 'Avançar para Entrega <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
         renderSummary();
-      } else if (currentStep === 8) {
+      } else if (currentStep === 9) {
         builderBtnNext.classList.add('whatsapp-btn');
         builderBtnNext.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg> Enviar pedido pelo WhatsApp';
       } else {
@@ -472,7 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Progress bar visibility
       const progressBar = document.querySelector('.builder-progress');
-      progressBar.style.display = currentStep > 6 ? 'none' : '';
+      progressBar.style.display = currentStep > 7 ? 'none' : '';
 
       // Scroll body to top
       builderBody.scrollTop = 0;
@@ -491,7 +492,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Single select
         step.querySelectorAll('.builder-card.selected').forEach(c => c.classList.remove('selected'));
         card.classList.add('selected');
-      } else if (stepNum >= 2 && stepNum <= 6) {
+      } else if (stepNum >= 2 && stepNum <= 7) {
         // Multi select
         card.classList.toggle('selected');
       }
@@ -534,7 +535,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Next button
     builderBtnNext.addEventListener('click', () => {
-      if (currentStep <= 6) {
+      if (currentStep <= 7) {
         // Save selections
         const step = builderBody.querySelector(`[data-builder-step="${currentStep}"]`);
         const selected = [...step.querySelectorAll('.builder-card.selected')].map(c => c.dataset.value);
@@ -546,7 +547,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         currentOrder[stepKeys[currentStep]] = selected;
 
-        if (currentStep === 6) {
+        if (currentStep === 7) {
           const obs = document.getElementById('builder-obs');
           currentOrder.observacao = obs ? obs.value.trim() : '';
           // Save and go to summary
@@ -559,10 +560,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         currentStep++;
         updateStepUI();
-      } else if (currentStep === 7) {
-        currentStep = 8;
-        updateStepUI();
       } else if (currentStep === 8) {
+        currentStep = 9;
+        updateStepUI();
+      } else if (currentStep === 9) {
         sendWhatsApp();
       }
     });
@@ -584,7 +585,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function resetBuilderSelections() {
-      for (let i = 1; i <= 6; i++) {
+      for (let i = 1; i <= 7; i++) {
         const step = builderBody.querySelector(`[data-builder-step="${i}"]`);
         if (step) step.querySelectorAll('.builder-card.selected').forEach(c => c.classList.remove('selected'));
       }
@@ -610,7 +611,8 @@ document.addEventListener('DOMContentLoaded', () => {
         rows.push(`<div class="builder-summary-row"><span class="emoji">🍦</span><span>Gelatos: <strong>${order.gelatos?.length ? order.gelatos.join(', ') : 'Nenhum'}</strong></span></div>`);
         rows.push(`<div class="builder-summary-row"><span class="emoji">🍓</span><span>Frutas: <strong>${order.frutas?.length ? order.frutas.join(', ') : 'Nenhuma'}</strong></span></div>`);
         rows.push(`<div class="builder-summary-row"><span class="emoji">🍫</span><span>Complementos: <strong>${order.complementos?.length ? order.complementos.join(', ') : 'Nenhum'}</strong></span></div>`);
-        rows.push(`<div class="builder-summary-row"><span class="emoji">🍯</span><span>Caldas: <strong>${order.caldas?.length ? order.caldas.join(', ') : 'Nenhuma'}</strong></span></div>`);
+        rows.push(`<div class="builder-summary-row"><span class="emoji">🍫</span><span>Coberturas: <strong>${order.coberturas?.length ? order.coberturas.join(', ') : 'Nenhuma'}</strong></span></div>`);
+        rows.push(`<div class="builder-summary-row"><span class="emoji">🥜</span><span>Adicionais: <strong>${order.adicionais?.length ? order.adicionais.join(', ') : 'Nenhum'}</strong></span></div>`);
         if (order.observacao) rows.push(`<div class="builder-summary-row"><span class="emoji">📝</span><span>Observação: <strong>${order.observacao}</strong></span></div>`);
 
         card.innerHTML = `
@@ -697,7 +699,8 @@ document.addEventListener('DOMContentLoaded', () => {
         msg += `🍦 Gelatos: *${order.gelatos?.length ? order.gelatos.join(', ') : 'Nenhum'}*\n`;
         msg += `🍓 Frutas: *${order.frutas?.length ? order.frutas.join(', ') : 'Nenhuma'}*\n`;
         msg += `🍫 Complementos: *${order.complementos?.length ? order.complementos.join(', ') : 'Nenhum'}*\n`;
-        msg += `🍯 Caldas: *${order.caldas?.length ? order.caldas.join(', ') : 'Nenhuma'}*\n`;
+        msg += `🍫 Coberturas: *${order.coberturas?.length ? order.coberturas.join(', ') : 'Nenhuma'}*\n`;
+        msg += `🥜 Adicionais: *${order.adicionais?.length ? order.adicionais.join(', ') : 'Nenhum'}*\n`;
         if (order.observacao) {
           msg += `📝 Observação: *${order.observacao}*\n`;
         }

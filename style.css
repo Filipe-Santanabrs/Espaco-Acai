@@ -1236,6 +1236,41 @@ ul {
   border-color: var(--purple-main);
 }
 
+.menu-card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 16px;
+}
+.menu-card-list li {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.72);
+  padding: 5px 0 5px 12px;
+  border-left: 2px solid rgba(155, 79, 213, 0.25);
+  transition: all var(--transition-fast);
+}
+.menu-card-list li:hover {
+  color: var(--white);
+  border-left-color: var(--orange-main);
+}
+
+.menu-card-sub-label {
+  font-family: var(--font-accent);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--purple-glow);
+  margin: 16px 0 8px;
+  opacity: 0.85;
+}
+.menu-card-sub-label:first-of-type {
+  margin-top: 0;
+}
+
 /* ==========================================
    NOSSA HISTÓRIA (OUR STORY) SECTION
    ========================================== */
