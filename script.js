@@ -748,9 +748,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const startAutoScroll = () => {
-      // Opt-out of auto-scroll on mobile since hardware is weaker and users can swipe
-      if (isTouchDevice || window.innerWidth <= 768) return;
-      
       // Cancel any existing frame to prevent speed-up
       cancelAnimationFrame(animationId);
       
@@ -777,7 +774,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sliderObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         sliderVisible = entry.isIntersecting;
-        if (sliderVisible && !isTouchDevice && window.innerWidth > 768) {
+        if (sliderVisible) {
           startAutoScroll();
         } else {
           stopAutoScroll();
