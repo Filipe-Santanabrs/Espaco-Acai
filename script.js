@@ -597,6 +597,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (obs) obs.value = '';
     }
 
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
     function shakeBtn(btn) {
       btn.style.animation = 'shake 0.4s ease';
       btn.addEventListener('animationend', () => { btn.style.animation = ''; }, { once: true });
@@ -617,7 +623,7 @@ document.addEventListener('DOMContentLoaded', () => {
         rows.push(`<div class="builder-summary-row"><span class="emoji">🍫</span><span>Complementos: <strong>${order.complementos?.length ? order.complementos.join(', ') : 'Nenhum'}</strong></span></div>`);
         rows.push(`<div class="builder-summary-row"><span class="emoji">🍫</span><span>Coberturas: <strong>${order.coberturas?.length ? order.coberturas.join(', ') : 'Nenhuma'}</strong></span></div>`);
         rows.push(`<div class="builder-summary-row"><span class="emoji">🥜</span><span>Adicionais: <strong>${order.adicionais?.length ? order.adicionais.join(', ') : 'Nenhum'}</strong></span></div>`);
-        if (order.observacao) rows.push(`<div class="builder-summary-row"><span class="emoji">📝</span><span>Observação: <strong>${order.observacao}</strong></span></div>`);
+        if (order.observacao) rows.push(`<div class="builder-summary-row"><span class="emoji">📝</span><span>Observação: <strong>${escapeHtml(order.observacao)}</strong></span></div>`);
 
         card.innerHTML = `
           <div class="builder-summary-card-header">
