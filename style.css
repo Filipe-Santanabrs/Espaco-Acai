@@ -2586,11 +2586,11 @@ ul {
 
 /* Responsive Builder */
 @media (max-width: 768px) {
-  .builder-modal { width: 100%; max-width: 100%; max-height: 100vh; border-radius: 0; }
+  .builder-modal { width: 100%; max-width: 100%; height: 100%; max-height: -webkit-fill-available; border-radius: 0; }
   .builder-header { padding: 14px 18px; }
   .builder-progress { padding: 12px 18px 6px; }
   .builder-body { padding: 18px; }
-  .builder-footer { padding: 14px 18px; }
+  .builder-footer { padding: 14px 18px 24px; padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
   .builder-step-dot small { display: none; }
   .builder-cards-grid.cols-4 { grid-template-columns: repeat(3, 1fr); }
   .builder-cards-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
