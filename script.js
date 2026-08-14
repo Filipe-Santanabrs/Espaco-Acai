@@ -240,8 +240,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const minutes = now.getMinutes();
     const timeInMinutes = hours * 60 + minutes;
     
-    // Open: 16:30 (990min) to 22:00 (1320min)
-    const isOpen = timeInMinutes >= 990 && timeInMinutes <= 1320;
+    // Open: 16:00 (960min) to 22:30 (1350min)
+    const isOpen = timeInMinutes >= 960 && timeInMinutes <= 1350;
     
     if (statusDot) {
       statusDot.classList.toggle('open', isOpen);
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (headerStatus) {
       const statusText = headerStatus.querySelector('span:last-child');
       if (statusText) {
-        statusText.textContent = isOpen ? 'Aberto · 16:30–22:00' : 'Fechado · 16:30–22:00';
+        statusText.textContent = isOpen ? 'Aberto · 16:00–22:30' : 'Fechado · 16:00–22:30';
       }
     }
   };
@@ -271,8 +271,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const minutes = now.getMinutes();
       const timeInMinutes = hours * 60 + minutes;
       
-      // Open: 16:30 (990min) to 22:00 (1320min)
-      const isOpen = timeInMinutes >= 990 && timeInMinutes <= 1320;
+      // Open: 16:00 (960min) to 22:30 (1350min)
+      const isOpen = timeInMinutes >= 960 && timeInMinutes <= 1350;
       
       if (isOpen) {
         statusTitle.textContent = 'Loja Aberta';
