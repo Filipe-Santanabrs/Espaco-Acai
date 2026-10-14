@@ -240,8 +240,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const minutes = now.getMinutes();
     const timeInMinutes = hours * 60 + minutes;
     
-    // Open: 16:00 (960min) to 22:30 (1350min)
-    const isOpen = timeInMinutes >= 960 && timeInMinutes <= 1350;
+    // Open: 16:30 (990min) to 22:30 (1350min)
+    const isOpen = timeInMinutes >= 990 && timeInMinutes <= 1350;
     
     if (statusDot) {
       statusDot.classList.toggle('open', isOpen);
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (headerStatus) {
       const statusText = headerStatus.querySelector('span:last-child');
       if (statusText) {
-        statusText.textContent = isOpen ? 'Aberto · 16:00–22:30' : 'Fechado · 16:00–22:30';
+        statusText.textContent = isOpen ? 'Aberto · 16:30–22:30' : 'Fechado · 16:30–22:30';
       }
     }
   };
@@ -271,8 +271,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const minutes = now.getMinutes();
       const timeInMinutes = hours * 60 + minutes;
       
-      // Open: 16:00 (960min) to 22:30 (1350min)
-      const isOpen = timeInMinutes >= 960 && timeInMinutes <= 1350;
+      // Open: 16:30 (990min) to 22:30 (1350min)
+      const isOpen = timeInMinutes >= 990 && timeInMinutes <= 1350;
       
       if (isOpen) {
         statusTitle.textContent = 'Loja Aberta';
@@ -719,7 +719,10 @@ document.addEventListener('DOMContentLoaded', () => {
       msg += `\n*Forma de entrega:* ${deliveryType === 'delivery' ? 'Delivery' : 'Retirada no Local'}\n`;
 
       if (deliveryType === 'delivery') {
-        msg += `*Região:* ${selectedRegion.name} (Taxa: R$ ${selectedRegion.taxa})\n`;
+        const taxaText = selectedRegion.taxa.includes('Grátis') || selectedRegion.taxa.includes('0,00')
+          ? (selectedRegion.taxa === '0,00' ? 'GRÁTIS' : selectedRegion.taxa)
+          : `R$ ${selectedRegion.taxa}`;
+        msg += `*Região:* ${selectedRegion.name} (Taxa: ${taxaText})\n`;
         msg += `*Endereço de entrega:*\n`;
         msg += `Bairro: ${document.getElementById('b-bairro').value.trim()}\n`;
         msg += `Rua: ${document.getElementById('b-rua').value.trim()}\n`;
